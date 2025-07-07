@@ -3,5 +3,5 @@ kind: Deployment
 metadata:
   name: deployment-2048
 spec:
-  replicas: 1
+  replicas: 4
 
