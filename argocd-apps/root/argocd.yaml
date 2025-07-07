@@ -27,7 +27,7 @@ spec:
   source:
     repoURL: https://github.com/buddesree/2048.git
     targetRevision: main
-    path: argocd-apps/root
+    path: argocd-apps/base-apps
     directory:
       recurse: true
   destination:
