@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 
 metadata:
-  name: 2048
+  name: game-2048-dev
   namespace: argocd
 
 spec:
@@ -21,7 +21,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: 2048
+  name: game-2048-dev
   namespace: argocd
 
 spec:
@@ -29,7 +29,7 @@ spec:
     repoURL: 'https://github.com/buddesree/2048.git'
     targetRevision: main
     path: k8s/overlays/dev
-  project: 2048
+  project: game-2048-dev
   destination:
     server: https://kubernetes.default.svc
     namespace: game-2048-dev
