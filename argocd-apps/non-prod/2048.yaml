@@ -1,0 +1,43 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+
+metadata:
+  name: game-2048-non-prod
+  namespace: argocd
+
+spec:
+  destinations:
+    - namespace: game-2048-non-prod
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://github.com/buddesree/2048.git
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: game-2048-non-prod
+  namespace: argocd
+
+spec:
+  source:
+    repoURL: 'https://github.com/buddesree/2048.git'
+    targetRevision: main
+    path: overlays/non-prod
+  project: game-2048-non-prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: game-2048-non-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutofSyncOnly=true
+      - CreateNamespace=true
+      - ServerSideApply=true
