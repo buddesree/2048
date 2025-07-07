@@ -28,7 +28,7 @@ spec:
   source:
     repoURL: 'https://github.com/buddesree/2048.git'
     targetRevision: main
-    path: argocd-apps/base
+    path: argocd-apps/base/argocd.yaml
   project: argocd
   destination:
     server: https://kubernetes.default.svc
