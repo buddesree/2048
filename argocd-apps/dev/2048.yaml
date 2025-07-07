@@ -28,7 +28,7 @@ spec:
   source:
     repoURL: 'https://github.com/buddesree/2048.git'
     targetRevision: main
-    path: k8s/overlays/dev
+    path: 2048/overlays/dev
   project: game-2048-dev
   destination:
     server: https://kubernetes.default.svc
