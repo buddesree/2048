@@ -30,7 +30,7 @@ spec:
     repoURL: https://github.com/buddesree/2048.git
     targetRevision: main
   sources: []
-  project: argocd-apps
+  project: argocd
   syncPolicy:
     automated:
       prune: true
