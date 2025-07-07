@@ -1,0 +1,44 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+
+metadata:
+  name: 2048
+  namespace: argocd
+
+spec:
+  destinations:
+    - namespace: game-2048-dev
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://github.com/
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: 2048
+  namespace: argocd
+
+
+spec:
+  source:
+    repoURL: 'https://github.com/'
+    targetRevision: main
+    path: k8s/overlays/dev
+  project: 2048
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: game-2048-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutofSyncOnly=true
+      - CreateNamespace=true
+      - ServerSideApply=true
