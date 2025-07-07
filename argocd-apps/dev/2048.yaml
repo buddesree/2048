@@ -11,7 +11,7 @@ spec:
     - namespace: game-2048-dev
       server: https://kubernetes.default.svc
   sourceRepos:
-    - https://github.com/
+    - https://github.com/buddesree/2048.git
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
@@ -27,7 +27,7 @@ metadata:
 
 spec:
   source:
-    repoURL: 'https://github.com/'
+    repoURL: 'https://github.com/buddesree/2048.git'
     targetRevision: main
     path: k8s/overlays/dev
   project: 2048
