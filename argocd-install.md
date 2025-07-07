@@ -10,15 +10,16 @@ kubectl create namespace argocd
 
 ```bash
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
 
 ## ✅ Step 3: Expose the Argo CD UI
 
-By default, Argo CD API server is a **ClusterIP** (internal only). You have three options:
+By default, Argo CD API server is a **ClusterIP** (internal only).
 
 ### Port Forward (recommended for local/dev)
 
 ```bash
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+kubectl port-forward svc/argocd-server -n argocd 8080:80
 ```
 
 Then open:
